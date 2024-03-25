@@ -10,28 +10,33 @@
 </head>
 <body>
     <section>
-        <div class="bg-calc"><div class="header">
-            <img src="./logo.jpeg" alt="" width="25px">
-            <span>TP2 - calculatrice</span>
-        </div>
+        <audio id="monSon" src="./keytype.mp3"controls="false"></audio>
+        <div class="bg-calc">
+            <div class="header">
+                <img src="./logo.jpeg" alt="" width="25px">
+                <b>TP2 - calculatrice</b>
+            </div>
             <div class="calc">
-                <div class="screen">42+16</div>
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>+</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>-</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>/</button>
-                <button>0</button>
-                <button>fac</button>
-                <button>round</button>
-                <button>=</button>
+                <div class="screen">
+                    <span id="input-screen" class="input-screen">42+16</span>
+                    <span id="result-screen" class="result-screen">58</span>
+                </div>
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="operator">+</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="operator">-</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="operator">/</button>
+                <button class="number">0</button>
+                <button class="function">fac</button>
+                <button class="function">round</button>
+                <button id="equal">=</button>
             </div>
         </div>
             <ul class="circles">
@@ -48,5 +53,6 @@
                 <li></li>
             </ul>
     </section>
+    <script src="./script.js"></script>
 </body>
 </html>

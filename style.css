@@ -8,6 +8,10 @@ body{
     overflow: hidden;
 }
 
+section audio{
+    display: none;
+}
+
 .bg-calc{
     background-color: #222;
     border-radius: 28px;
@@ -49,9 +53,39 @@ button{
 
 .screen{
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     grid-area: 1/1/3/5;
     padding: 5px;
-    font-size: 3em;;
+    font-size: 3em;
+}
+
+.screen span{
+    transition: 500ms;
+}
+
+span:nth-child(2){
+    font-size: 0.7em;
+    opacity: 0.6;
+    color: crimson;
+}
+
+
+.get-out{
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.screen .scale{
+    font-size: 1em;
+    opacity: 1;
+    color: white;
+    transform: translateY(-30px);
+}
+
+.scale .reboot-scale{
+    font-size: 0.7em;
+    opacity: 0.6;
+    transform: translateY(30px);
 }
