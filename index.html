@@ -3,24 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./bulles.css">
-    <link rel="icon" href="./logo.jpeg">
-    <title>Tp2 - Caalculatrice</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/bulles.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <!-- <link rel="stylesheet" href="./css/fontawesome.min.css"> -->
+    <link rel="icon" href="./images/logo.jpeg">
+    <title>Tp2 - Calculatrice</title>
 </head>
 <body>
     <section>
-        <audio id="monSon" src="./keytype.mp3"controls="false"></audio>
+        <audio id="monSon" src="./audio/keytype.mp3"controls="false"></audio>
         <div class="bg-calc">
             <div class="header">
-                <img src="./logo.jpeg" alt="" width="25px">
+                <img src="./images/logo.jpeg" alt="" width="25px">
                 <b>TP2 - calculatrice</b>
             </div>
             <div class="calc">
                 <div class="screen">
-                    <span id="input-screen" class="input-screen">42+16</span>
-                    <span id="result-screen" class="result-screen">58</span>
+                    <span id="list" class="list">
+                        list
+                        <span id="rotate-up" class="rotate-up">></span>
+                        <ul id="menu" class="menu">
+                            <li>blabla</li>
+                            <li>blabla</li>
+                            <li>blabla</li>
+                            <li>blabla</li>
+                            <li>blabla</li>
+                            <li>blabla</li>
+                        </ul>
+                    </span>
+                    <span id="input-screen" class="input-screen">0</span>
+                    <span id="result-screen" class="result-screen">0</span>
                 </div>
+                <button id="clear">AC</button>
+                <button class="operator">!</button>
+                <button id="backspace"><i class="fa fa-delete-left"></i></button>
+                <button class="operator">*</button>
                 <button class="number">1</button>
                 <button class="number">2</button>
                 <button class="number">3</button>
@@ -34,8 +52,8 @@
                 <button class="number">9</button>
                 <button class="operator">/</button>
                 <button class="number">0</button>
-                <button class="function">fac</button>
-                <button class="function">round</button>
+                <button id="point">.</button>
+                <button id="function-round">round</button>
                 <button id="equal">=</button>
             </div>
         </div>
@@ -53,6 +71,6 @@
                 <li></li>
             </ul>
     </section>
-    <script src="./script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 .circles{
     position: absolute;
     width: 330px;
-
 }
 
 .circles li{
@@ -95,7 +94,7 @@
     animation-duration: 11s;
 }
 
-li{
+.circles li{
     bottom: -150px;
     animation: bulobulo 25s linear infinite;
 }
