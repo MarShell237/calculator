@@ -2,7 +2,7 @@ body{
     display: flex;
     height: 120vh;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-family: pacifico;
     background: linear-gradient(#e7cdc3,#b1a6f5);
     overflow:hidden;
