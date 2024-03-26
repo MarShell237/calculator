@@ -44,6 +44,7 @@ buttonEqual.addEventListener(
 
         let newLi = document.createElement('li');
         newLi.innerText=resultat+'='+show();
+        resultat=show();
         menu.insertBefore(newLi,menu.firstChild);
     }
 );
@@ -143,5 +144,5 @@ function getOperator(event){
 }
 
 function show(){
-    return eval(resultat);
+    return String(eval(resultat));
 }
