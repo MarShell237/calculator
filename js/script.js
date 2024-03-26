@@ -1,22 +1,28 @@
 // --------Chargement des objets du DOM
 
-var buttonEqual = document.getElementById('equal');
-var inputScreen = document.getElementById('input-screen');
-var resultScreen = document.getElementById('result-screen');
-var myList = document.getElementById('list');
-var son = document.getElementById("monSon");
-var arrow = document.getElementById('rotate-up');
-var menu = document.getElementById('menu');
-var backspace = document.getElementById('backspace');
-var clear = document.getElementById('clear');
-var point = document.getElementById('point');
-var boutons = document.getElementsByTagName("button");
-var numberButtons = document.getElementsByClassName('number');
-var oparatorButtons = document.getElementsByClassName('operator');
+let buttonEqual = document.getElementById('equal');
+let inputScreen = document.getElementById('input-screen');
+let resultScreen = document.getElementById('result-screen');
+let myList = document.getElementById('list');
+let son = document.getElementById("monSon");
+let arrow = document.getElementById('rotate-up');
+let menu = document.getElementById('menu');
+let backspace = document.getElementById('backspace');
+let clear = document.getElementById('clear');
+let point = document.getElementById('point');
+let factoriel = document.getElementById('factoriel');
+let round = document.getElementById('round');
+let boutons = document.getElementsByTagName("button");
+let numberButtons = document.getElementsByClassName('number');
+let oparatorButtons = document.getElementsByClassName('operator');
 
+// --------variables locals
+let resultat = "";
+let lastIsOperator = false;
+let lastIsPoint = false;
 
 // assignation des events handlers
-for (var i = 0; i < boutons.length; i++) {
+for (let i = 0; i < boutons.length; i++) {
     boutons[i].addEventListener("click", jouerSon);
 }
 
@@ -35,6 +41,10 @@ buttonEqual.addEventListener(
     ()=>{
         resultScreen.innerHTML=show();
         inputScreen.classList.toggle('get-out');
+
+        let newLi = document.createElement('li');
+        newLi.innerText=resultat+'='+show();
+        menu.insertBefore(newLi,menu.firstChild);
     }
 );
 
@@ -58,42 +68,80 @@ backspace.addEventListener(
     ()=>{
         resultat=resultat.slice(0,-1);
         inputScreen.innerText=resultat;
+        lastIsPoint=false;
+        lastIsOperator=false;
     }
 )
 
 clear.addEventListener(
     "click",
     ()=>{
-        inputScreen.innerText=resultat="0";
+        inputScreen.innerText=resultat=""
+        resultScreen.innerText="0";
     }
 )
 
 point.addEventListener(
     'click',
     ()=>{
-        resultat+=".";
-        inputScreen.innerText=resultat;
+        if (!lastIsPoint) {
+            resultat+=".";
+            inputScreen.innerText=resultat;
+            lastIsPoint=true;
+            lastIsOperator=false;    
+        }
     }
 )
 
+factoriel.addEventListener(
+    'click',
+    ()=>{
+        resultat=resultat.slice(0,-1);
+        inputScreen.innerText=resultScreen.innerText=resultat=String(factorielle(eval(resultat)));
+    }
+)
+
+round.addEventListener(
+    'click',
+    ()=>{
+        let nombre = parseFloat(resultat);
+        let arrondiInf = Math.floor(nombre);
+        let arrondiSup = Math.ceil(nombre);
+        if (nombre-arrondiInf<0.5)
+            inputScreen.innerText=resultScreen.innerText=resultat=arrondiInf;
+        else
+            inputScreen.innerText=resultScreen.innerText=resultat=arrondiSup;
+    }
+)
 // -----------Fonctions
-var resultat = "";
 
 function jouerSon(event) {
     son.play();
 }
 
+function factorielle(n){
+    if(n===0)
+        return 1;
+
+    return n*factorielle(n-1);
+}       
 
 function getNumber(event){
+    lastIsOperator=false;
+    lastIsPoint=false;
     resultat +=event.target.innerText;
     inputScreen.innerText = resultat;
 }
 
 function getOperator(event){
-    resultat +=event.target.innerText;
-    inputScreen.innerText = resultat;
+    if (!lastIsOperator) {
+        resultat +=event.target.innerText;
+        inputScreen.innerText = resultat;
+        lastIsOperator=true;
+        lastIsPoint=false;    
+    }
 }
 
 function show(){
-    return Number(resultat);
+    return eval(resultat);
 }
